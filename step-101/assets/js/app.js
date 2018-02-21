@@ -1,6 +1,7 @@
  
 
 	function init() {
+		"use strict";
             window.addEventListener('scroll', function(e) {
                 var distanceY = window.pageYOffset || document.documentElement.scrollTop,
                     shrinkOn = 300,
@@ -18,7 +19,7 @@
 				method:'GET',
 				url:'assets/data/menu.json',
 				dataType:'json',
-				success: function(){
+				success: function(data){
 					console.log('call was good');
 					console.log(data.menu.length);
 					
@@ -26,17 +27,19 @@
 						data.menu.forEach(function(item){
 							
 							console.log(item);
-							$('nav').append('<a href="">'+item.MenuLink+'">'+item.MenuName+'</a>')
+							//$('nav').append('<a href="love.html">love</a>');							
+							$('nav').append('<a href="'+item.MenuLink+'">'+item.MenuName+'</a>');
+							//$('nav').append("<a href='"+item.MenuLink+"'>"+item.MenuName+"</a>");
 							
-						})
+						});
 						
 						
 					}
-				}
+				},
 				error: function(){
 					console.log('call was bad');
 				}
-			})
+			});
 		
 		
 		
